@@ -1,0 +1,24 @@
+To DrawShell :shellno
+  make "size 100
+  repeat :shellno [arc 360 :size make "size :size + 50]
+END
+
+TO DrawElectron :shellno :electronno
+  setxy 0 0
+  make "radius 100+(50*:shellno)
+  make "angle 0
+  make "angle_change 360/:electronno
+  repeat :electronno [PU setxy ((cos(:angle))*:radius) ((sin(:angle))*:radius) PD arc 360 10 fill make "angle :angle + :angle_change]
+  PU
+  setxy 0 0
+  PD
+END
+To DrawSymbol :text 
+  setlabelheight 100
+  pu
+  setxy -55 -30
+  rt 90
+  label :text
+  setxy 0 0
+  pd
+END
